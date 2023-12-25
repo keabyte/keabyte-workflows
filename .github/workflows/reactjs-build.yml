@@ -1,6 +1,7 @@
 name: reactjs-build
 on:
   workflow_call:
+    secrets: inherit
 jobs:
     deploy:
         runs-on: ubuntu-latest
