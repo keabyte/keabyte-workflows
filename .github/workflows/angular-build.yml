@@ -2,10 +2,15 @@ name: angular-build
 on:
   workflow_call:
     inputs:
-      AWS_S3_BUCKET_NAME:
+      aws-s3-bucket-name:
         description: Name of the AWS S3 bucket to deploy to
         required: true
         type: string
+      build-output-directory:
+        description: Where the build output can be found
+        required: false
+        type: string
+        default: "dist"
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -31,7 +36,7 @@ jobs:
         with:
           args: --acl public-read --delete
         env:
-          AWS_S3_BUCKET: ${{ inputs.AWS_S3_BUCKET_NAME }}
+          AWS_S3_BUCKET: ${{ inputs.aws-s3-bucket-name }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_DEPLOYER_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_DEPLOYER_ACCESS_KEY_SECRET }}
-          SOURCE_DIR: "dist"
+          SOURCE_DIR: ${{ inputs.build-output-directory }}
