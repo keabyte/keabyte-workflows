@@ -1,6 +1,11 @@
 name: angular-build
 on:
   workflow_call:
+    inputs:
+      AWS_S3_BUCKET_NAME:
+        description: Name of the AWS S3 bucket to deploy to
+        required: true
+        type: string
 jobs:
   deploy:
     runs-on: ubuntu-latest
