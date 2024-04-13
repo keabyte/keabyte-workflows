@@ -1,4 +1,4 @@
-name: serverless-build-deploy
+name: serverless-deploy
 on:
   workflow_call:
     inputs:
