@@ -37,6 +37,6 @@ jobs:
           args: --follow-symlinks --delete
         env:
           AWS_S3_BUCKET: ${{ inputs.aws-s3-bucket-name }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.DEPLOYER_AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEPLOYER_AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_APP_DEPLOYER_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_APP_DEPLOYER_ACCESS_KEY_SECRET }}
           SOURCE_DIR: ${{ inputs.build-output-directory }}
