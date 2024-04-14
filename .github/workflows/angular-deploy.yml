@@ -1,4 +1,4 @@
-name: angular-build
+name: deploy-prod
 on:
   workflow_call:
     inputs:
@@ -11,12 +11,13 @@ on:
         required: false
         type: string
         default: "dist"
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.16.0]
+        node-version: [18.x]
     steps:
       - uses: actions/checkout@v2
 
