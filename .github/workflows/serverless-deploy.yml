@@ -22,9 +22,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm i -g serverless
-    - run: npm ci
     - run: serverless config credentials --provider aws --key ${{ secrets.AWS_APP_DEPLOYER_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_APP_DEPLOYER_ACCESS_KEY_SECRET }} -o
+    - run: npm ci
     - name: serverless deploy
-      run: sls deploy --stage=${{ inputs.stage }}
+      run: sls create_domain --stage=${{ inputs.stage }} && sls deploy --stage=${{ inputs.stage }}
       env:
         SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
