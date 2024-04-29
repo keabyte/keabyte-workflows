@@ -2,14 +2,14 @@ name: deploy-prod
 on:
   workflow_call:
     inputs:
-      stage:
-        description: Environment stage to deploy to e.g. dev, production
-        required: false
+      vercel-project-id:
+        description: Vercel project ID
+        required: true
         type: string
-        default: dev
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ inputs.vercel-project-id }}
 
 jobs:
   deploy:
